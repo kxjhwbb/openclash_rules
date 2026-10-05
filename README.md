@@ -27,12 +27,13 @@ Clash/
 
 | 分组名 | 候选项 | 默认 | 说明 |
 |---|---|---|---|
-| 🎯 全球直连 | DIRECT + 全部节点 | DIRECT | 国内域名/IP 直连 |
 | 🛑 全球拦截 | REJECT + DIRECT | REJECT | 广告拦截 |
 | 🇨🇳 禁海外IP之内地网站 | DIRECT + REJECT + 全部节点 | DIRECT | 仅限大陆IP访问的网站，**需手动选一个大陆节点** |
 | 🤖 禁香港IP之AI工具 | DIRECT + REJECT + 全部节点 | DIRECT | 对香港IP限制的服务，**需手动选一个海外节点** |
 
 > **重要提醒**：两个自定义分组默认是 `DIRECT`，第一次使用时需要在 OpenClash 面板里手动选择对应的节点（选完会保留，不会每次重置）。
+>
+> **极简设计**：配置仅保留 5 条规则（广告拦截 + 2 个自定义分流 + GoogleDirect + FINAL），不加载冗余的直连规则集（LocalAreaNetwork、ChinaDomain 等），启动更快、内存占用更少。
 
 ## 用法
 
