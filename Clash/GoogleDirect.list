@@ -1,0 +1,5 @@
+# Google AI 产品页面，保持直连（不代理）
+# 对应 OpenClash 覆写里原本的 DIRECT 规则
+
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,bard.google.com

@@ -1,0 +1,12 @@
+# 禁海外IP之内地网站
+# 这些站点会检测访问来源IP，非中国大陆IP会被拒绝访问或功能受限
+# 需要走大陆节点才能正常访问
+
+DOMAIN-SUFFIX,tianyancha.com
+DOMAIN-SUFFIX,qcc.com
+DOMAIN-SUFFIX,qibook.com
+DOMAIN-SUFFIX,aiqicha.com
+DOMAIN-SUFFIX,aiqicha.baidu.com
+DOMAIN-SUFFIX,oray.com
+DOMAIN-SUFFIX,sunlogin.cn
+DOMAIN-SUFFIX,oray.net

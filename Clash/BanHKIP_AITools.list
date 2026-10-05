@@ -1,0 +1,12 @@
+# 禁香港IP之AI工具
+# 这些 AI / 开发工具服务对香港出口IP限制或体验不佳，需要走海外（非香港）节点
+# 才能正常使用
+# 注意：gemini.google.com / bard.google.com 保持 DIRECT，不在此列表中
+
+DOMAIN-SUFFIX,jetbrains.com
+DOMAIN-SUFFIX,jetbrains.ai
+DOMAIN-KEYWORD,antigravity
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,ai.google.dev
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,accounts.google.com
