@@ -10,3 +10,6 @@ DOMAIN-SUFFIX,aiqicha.baidu.com
 DOMAIN-SUFFIX,oray.com
 DOMAIN-SUFFIX,sunlogin.cn
 DOMAIN-SUFFIX,oray.net
+
+# --- 天眼查 App 的 IP 检测域名 ---
+DOMAIN-SUFFIX,shuzilm.cn
