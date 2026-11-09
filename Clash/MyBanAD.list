@@ -1,0 +1,7 @@
+# 自维护额外拦截列表
+# 用于补充 ACL4SSR 官方 BanAD / BanProgramAD 未覆盖的域名
+# 命中 🛑 全球拦截 分组（默认 REJECT）
+
+# --- 友盟（阿里）统计 / 崩溃上报 SDK ---
+# 大量国内 App 共用该 SDK；天眼查 App 疑似通过它上报真实 IP
+DOMAIN-SUFFIX,umengcloud.com

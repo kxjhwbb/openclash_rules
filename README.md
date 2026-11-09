@@ -19,40 +19,45 @@ Clash/
 ├── BanOverseaIP_Mainland.list   # 【禁海外IP之内地网站】天眼查/企查查/爱企查/向日葵等
 ├── BanHKIP_AITools.list         # 【禁香港IP之AI工具】ChatGPT/Claude/Cursor/JetBrains/Google AI API 等
 ├── GoogleDirect.list            # gemini.google.com / bard.google.com 直连
+├── MyBanAD.list                 # 【自维护拦截】补充 ACL4SSR 官方广告列表，如 umengcloud.com
 └── config/
-    └── MyACL4SSR_Mini_NoAuto.ini   # subconverter 配置模板（使用 jsDelivr CDN 加速）
+    └── MyACL4SSR_Mini_NoAuto.ini   # subconverter 配置模板
 ```
+
+> 规则列表统一使用 GitHub Raw 链接（`raw.githubusercontent.com`），**推送后约 5 分钟内即可生效**，无需清 CDN 缓存。
+> 若你的 subconverter 无法直连 GitHub，可把 `.ini` 里 `raw.githubusercontent.com/kxjhwbb/openclash_rules/main/` 全部替换为 `cdn.jsdelivr.net/gh/kxjhwbb/openclash_rules@main/`（jsDelivr 有较长缓存，需手动 purge）。
 
 ## 策略组
 
 | 分组名 | 候选项 | 默认 | 说明 |
 |---|---|---|---|
-| 🛑 全球拦截 | REJECT + DIRECT | REJECT | 广告拦截 |
+| 🛑 全球拦截 | REJECT + DIRECT | REJECT | 广告拦截（ACL4SSR 官方列表 + 自维护 `MyBanAD.list`） |
 | 🇨🇳 禁海外IP之内地网站 | 大陆/回国节点 + DIRECT + REJECT | 首个大陆节点 | 仅限大陆IP访问的网站，**正则自动筛选大陆节点** |
 | 🤖 禁香港IP之AI工具 | 海外可用节点 + DIRECT + REJECT | 首个海外节点 | 对香港IP限制的服务，**正则自动排除香港及大陆节点** |
 
 > **提示**：两个自定义分组已将筛选后的有效节点排在最前，默认自动选中首个匹配节点（也可在面板里随时切换其他节点，选完后会自动保存）。
 >
-> **极简设计**：配置仅保留 5 条规则（广告拦截 + 2 个自定义分流 + GoogleDirect + FINAL），不加载冗余的直连规则集（LocalAreaNetwork、ChinaDomain 等），启动更快、内存占用更少。
+> **极简设计**：仅保留 7 条 ruleset（GoogleDirect + 2 个自定义分流 + 3 个广告拦截 + FINAL），不加载冗余的直连规则集（LocalAreaNetwork、ChinaDomain 等），启动更快、内存占用更少。
 
 ## 用法
 
-在自建 subconverter 的订阅链接上指定 `config` 参数为本仓库的配置链接（推荐使用 CDN 加速链接）：
-
-```
-http://你的subconverter地址/sub?target=clash&url=你的原始订阅&config=https://cdn.jsdelivr.net/gh/kxjhwbb/openclash_rules@main/Clash/config/MyACL4SSR_Mini_NoAuto.ini
-```
-
-或使用 GitHub Raw 链接：
+在自建 subconverter 的订阅链接上指定 `config` 参数为本仓库的配置链接（推荐 GitHub Raw，规则改动约 5 分钟生效）：
 
 ```
 http://你的subconverter地址/sub?target=clash&url=你的原始订阅&config=https://raw.githubusercontent.com/kxjhwbb/openclash_rules/main/Clash/config/MyACL4SSR_Mini_NoAuto.ini
+```
+
+或使用 jsDelivr CDN 加速链接（缓存较久，改动后需手动 purge）：
+
+```
+http://你的subconverter地址/sub?target=clash&url=你的原始订阅&config=https://cdn.jsdelivr.net/gh/kxjhwbb/openclash_rules@main/Clash/config/MyACL4SSR_Mini_NoAuto.ini
 ```
 
 ## 维护
 
 - 日常发现新的"仅限大陆IP访问"网站，加进 `BanOverseaIP_Mainland.list`
 - 发现新的"香港IP受限"的 AI/开发工具，加进 `BanHKIP_AITools.list`
+- 发现官方广告列表漏掉的跟踪/上报域名，加进 `MyBanAD.list`（命中 🛑 全球拦截）
 - 规则文件为纯域名列表（`DOMAIN-SUFFIX,xxx` / `DOMAIN-KEYWORD,xxx`），一行一条，`#` 开头为注释
 
 ## 适用场景
